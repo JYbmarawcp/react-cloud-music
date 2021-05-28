@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 
 export default memo(function Home(props) {
   const { route } = props;
-  console.log(props);
   return (
     <div>
       <Top>
