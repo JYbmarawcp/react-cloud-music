@@ -7,7 +7,6 @@ import {
 import { getCount } from '../../api/utils'
 
 export default memo(function RecommendList(porps) {
-  console.log(porps.recommendList);
   return (
     <ListWrapper>
       <h1 className="title">推荐歌单</h1>

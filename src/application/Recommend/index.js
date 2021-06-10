@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
 import Slider from '../../components/slider'
 import RecommendList from '../../components/list'
+import Scroll from '../../baseUI/scroll/index'
+import { Content } from './style'
 
 export default memo(function Recommend() {
 
@@ -18,9 +20,13 @@ export default memo(function Recommend() {
   });
 
   return (
-    <div>
-      <Slider bannerList={bannerList}></Slider>
-      <RecommendList recommendList={recommendList}></RecommendList>
-    </div>
+    <Content>
+      <Scroll>
+        <div>
+          <Slider bannerList={bannerList}></Slider>
+          <RecommendList recommendList={recommendList}></RecommendList>
+        </div>
+      </Scroll>
+    </Content>
   )
 })
