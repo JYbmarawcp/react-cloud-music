@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
   baseURL: baseUrl
 });
 
-axiosInstance.interceptors.request.use(
+axiosInstance.interceptors.response.use(
   res => res.data,
   err => {
     console.log(err, "网络错误");

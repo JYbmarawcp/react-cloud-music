@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import Slider from '../../components/slider'
 import RecommendList from '../../components/list'
 import Scroll from '../../baseUI/scroll/index'
 import { Content } from './style'
 
-export default memo(function Recommend() {
+function Recommend(props) {
 
   // mock 数据
   const bannerList = [1,2,3,4].map(item => {
@@ -29,4 +29,14 @@ export default memo(function Recommend() {
       </Scroll>
     </Content>
   )
+}
+
+// 映射Redux全局的state到组件的props上
+const mapStateToProps = (state) => ({
+  // 不要在这里将数据toJS,不然每次diff比对props的时候都是不一样的引用，还是导致不必要的重渲染, 属于滥用immutable
+  bannerList: state.getIn(['recommend', 'bannerList']),
+  recommendList: state.getIn(['recommend', 'recommendList']),
+  enterLoading: state.getIn(['recommend', 'enterLoading']) // 简单数据类型不需要调用toJS
 })
+
+export default memo(Recommend)
